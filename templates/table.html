@@ -1,0 +1,45 @@
+<html>
+
+	<head>
+		<title> Project | Table Data</title>
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='/Style.css') }}">
+	</head>
+
+	<body>
+	<div class="wrap">
+		<h1 class="heads">
+			Table Details
+		</h1>
+		<!-- <div>
+			<form action="/search" method="POST">
+				<input type="search" name="sear" placeholder="Search" id="">
+			</form>
+		</div> -->
+		<div class="but">
+			<a href="/" class="a">+ VALUES</a>
+		</div>
+		<table class="tab" cellpadding="5">
+			<thead>
+				<th>Name</th>
+				<th>Age</th>
+				<th colspan="2">Operations</th>
+			</thead>
+			{% for i in userdetails %}
+				<tr>
+					<td> {{ i[0] }} </td>
+					<td> {{ i[1] }} </td>
+					<td>
+						<a href="/update/{{ i[0] }}" class="a">Update</a>
+					</td>
+					<td>
+						<a href="/delete/{{ i[0] }}" class="a">delete</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+		<br>		
+		
+	</div>
+	</body>
+
+</html>
