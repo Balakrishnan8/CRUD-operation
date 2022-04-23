@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 app.config["MYSQL_HOST"] = "localhost"
 app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = "test"
+app.config["MYSQL_PASSWORD"] = ""
 app.config["MYSQL_DB"] = "Apps"
 
 mysql = MySQL(app)
@@ -23,13 +23,13 @@ def home():
 		return redirect("/table")
 	return render_template("index.html")
 
-""" @app.route("/search",methods=['POST','GET'])
+@app.route("/search",methods=['POST','GET'])
 def se():
 	sKey = request.form["sear"]
 	cur = mysql.connection.cursor()
-	res = cur.execute("SELECT * FROM datatable where NAME LIKE %s",(sKey,))
+	res = cur.execute("SELECT * FROM datatable where NAME LIKE '"+sKey+"%'")
 	tab = cur.fetchall()
-	return render_template("table.html", userdetails = tab) """
+	return render_template("table.html", userdetails = tab) 
 
 @app.route("/table")
 def fetch():
